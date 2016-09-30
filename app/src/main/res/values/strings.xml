@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">habit_tracker</string>
+    <string name="listTitle">List of Habits</string>
+    <string name="add_button">Add</string>
+    <string name="habit_name">Habit</string>
+    <string name="add_habit_button">Add Habit</string>
+    <string name="dateFormat">mm-dd-yyyy</string>
+</resources>

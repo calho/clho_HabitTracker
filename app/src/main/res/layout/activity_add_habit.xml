@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_add_habit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.calvin.habit_tracker.AddHabitActivity">
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editHabit"
+        android:hint="@string/habit_name"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_habit_button"
+        android:id="@+id/add_habit_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="addHabit"/>
+
+    <EditText
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/dateFormat"
+        android:layout_below="@+id/editHabit"
+        android:id="@+id/dateInput"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
+
+    <TextView
+        android:text="Monday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dateInput"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Monday"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:text="Tuesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Monday"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Tuesday"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:text="Wednesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Tuesday"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Wednesday"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:text="Thursday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Wednesday"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Thursday"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:text="Friday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Thursday"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Friday"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:text="Saturday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Friday"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Saturday"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:text="Sunday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Saturday"
+        android:layout_alignParentStart="true"
+        android:id="@+id/Sunday"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TcheckBox"
+        android:layout_alignBaseline="@+id/Tuesday"
+        android:layout_alignBottom="@+id/Tuesday"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/McheckBox"
+        android:layout_below="@+id/dateInput"
+        android:layout_alignStart="@+id/TcheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Wednesday"
+        android:layout_alignStart="@+id/WcheckBox"
+        android:id="@+id/RcheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/FcheckBox"
+        android:layout_below="@+id/Thursday"
+        android:layout_alignStart="@+id/RcheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/SatcheckBox"
+        android:layout_alignBaseline="@+id/Saturday"
+        android:layout_alignBottom="@+id/Saturday"
+        android:layout_alignStart="@+id/FcheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Saturday"
+        android:layout_alignStart="@+id/SatcheckBox"
+        android:id="@+id/SuncheckBox" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/WcheckBox"
+        android:layout_alignBaseline="@+id/Wednesday"
+        android:layout_alignBottom="@+id/Wednesday"
+        android:layout_alignStart="@+id/TcheckBox" />
+
+
+</RelativeLayout>
