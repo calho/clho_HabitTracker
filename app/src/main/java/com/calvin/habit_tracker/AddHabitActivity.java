@@ -20,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -28,20 +29,24 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+//Activity that allows user to add a habit. Date is filled automatically. After add button is pressed
+//it reads and save habit name, date input, what days are checked off.
+//Activity is finished upon adding a habit.
+
 public class AddHabitActivity extends AppCompatActivity {
     private static final String FILENAME = "file.sav";
-    private static ArrayList<Habit> habitList = new ArrayList<Habit>();
+    private static HabitList habitList = new HabitList();
     private static ArrayList<String> days = new ArrayList<String>();
     private static ArrayAdapter<Habit> adapter;
-    private EditText habitName;
-    private EditText habitDate;
-    private CheckBox MCB;
-    private CheckBox TCB;
-    private CheckBox WCB;
-    private CheckBox RCB;
-    private CheckBox FCB;
-    private CheckBox SatCB;
-    private CheckBox SunCB;
+    private static EditText habitName;
+    private static EditText habitDate;
+    private static CheckBox MCB;
+    private static CheckBox TCB;
+    private static CheckBox WCB;
+    private static CheckBox RCB;
+    private static CheckBox FCB;
+    private static CheckBox SatCB;
+    private static CheckBox SunCB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +63,9 @@ public class AddHabitActivity extends AppCompatActivity {
     protected void onStart() {
         // TODO Auto-generated method stub
         super.onStart();
-        loadFromFile();
-        adapter = new ArrayAdapter<Habit>(this,
-                R.layout.list_item, habitList);
+
+        adapter = new ArrayAdapter<Habit>(AddHabitActivity.this,
+                R.layout.list_item, habitList.getHabits());
     }
 
     public void mainMenu (View view) {
@@ -87,26 +92,27 @@ public class AddHabitActivity extends AppCompatActivity {
     }
 
     private void loadFromFile() {
-        ArrayList<String> tweets = new ArrayList<String>();
-        try {
-            FileInputStream fis = openFileInput(FILENAME);
-            BufferedReader in = new BufferedReader(new InputStreamReader(fis));
-            Gson gson = new Gson();
-            //Code taken from http://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt Sept.22,2016
-            Type listType = new TypeToken<ArrayList<Habit>>(){}.getType();
-            habitList = gson.fromJson(in, listType);
+        while(true) {
+            try {
+                FileInputStream fis = openFileInput(FILENAME);
+                BufferedReader in = new BufferedReader(new InputStreamReader(fis));
+                Gson gson = new Gson();
+                //Code taken from http://stackoverflow.com/questions/12384064/gson-convert-from-json-to-a-typed-arraylistt Sept.22,2016
+                Type listType = new TypeToken<HabitList>() {}.getType();
+                habitList = gson.fromJson(in, listType);
+                break;
 
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            throw new RuntimeException();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            throw new RuntimeException();
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                saveInFile();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                throw new RuntimeException();
+            }
         }
     }
 
     public void addHabit(View v) {
-
         habitName = (EditText) findViewById(R.id.editHabit);
         habitDate = (EditText) findViewById(R.id.dateInput);
         String name = habitName.getText().toString();
@@ -143,10 +149,10 @@ public class AddHabitActivity extends AppCompatActivity {
         }
         try {
             Date date = dateFormat.parse(dateString);
-            habitList.add(new Habit(name,date,days));
+            habitList.addHabit(new Habit(name,date,days));
             adapter.notifyDataSetChanged();
             saveInFile();
-            mainMenu(v);
+            finish();
         }catch (ParseException e) {
             e.printStackTrace();
         }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Show All"
+        android:id="@+id/allOption"
+        android:enabled="true"
+        android:onClick="AllOption"/>
+
+    <item android:title="Monday"
+        android:id="@+id/MondayOption"
+        android:enabled="true"
+        android:onClick="MondayOption"/>
+
+    <item android:title="Tuesday"
+        android:id="@+id/TuesdayOption"
+        android:enabled="true"
+        android:onClick="TuesdayOption"/>
+
+    <item android:title="Wednesday"
+        android:id="@+id/WednesdayOption"
+        android:enabled="true"
+        android:onClick="WednesOption"/>
+
+    <item android:title="Thursday"
+        android:id="@+id/ThursdayOption"
+        android:enabled="true"
+        android:onClick="ThursdayOption"/>
+
+    <item android:title="Friday"
+        android:id="@+id/FridayOption"
+        android:enabled="true"
+        android:onClick="FridayOption"/>
+
+    <item android:title="Saturday"
+        android:id="@+id/SaturdayOption"
+        android:enabled="true"
+        android:onClick="SaturdayOption"/>
+
+    <item android:title="Sunday"
+        android:id="@+id/SundayOption"
+        android:enabled="true"
+        android:onClick="SundayOption"/>
+</menu>

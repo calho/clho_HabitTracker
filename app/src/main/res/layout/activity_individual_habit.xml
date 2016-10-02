@@ -4,7 +4,7 @@
     android:id="@+id/activity_individual_habit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.calvin.habit_tracker.IndividualHabit">
+    tools:context="com.calvin.habit_tracker.IndividualHabitActivity">
 
     <TextView
         android:text="HabitName"
@@ -64,10 +64,10 @@
 
     <ListView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@+id/daysHeader"
         android:layout_alignParentStart="true"
-        android:id="@+id/dayList" />
+        android:id="@+id/dayList"
+        android:layout_height="150dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -77,4 +77,20 @@
         android:layout_alignBaseline="@+id/completionHeader"
         android:layout_alignBottom="@+id/completionHeader"
         android:layout_toEndOf="@+id/completionHeader" />
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/completionDates"
+        android:id="@+id/completedDateList"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="DatesCompleted:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/completionDates"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_below="@+id/dayList"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

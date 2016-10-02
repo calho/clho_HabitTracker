@@ -1,5 +1,6 @@
 package com.calvin.habit_tracker;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -7,17 +8,37 @@ import java.util.Collection;
  * Created by Calvin on 2016-09-29.
  */
 
-public class HabitList {
+//A list containing all habits. Able to add, delete, and get.
+
+public class HabitList implements Serializable{
     protected ArrayList<Habit> habitList;
-    protected ArrayList<Listener> listeners;
 
     public HabitList() {
         habitList = new ArrayList<Habit>();
-        listeners = new ArrayList<Listener>();
     }
 
-    public Collection<Habit> getHabits() {
-        return habitList;
+    public boolean hasHabit(Habit habit) {
+        return habitList.contains(habit);
+    }
+
+    public ArrayList<Habit> getHabits() {
+
+        return this.habitList;
+    }
+
+    public ArrayList<Habit> getHabits(String day){
+        ArrayList<Habit> dayHabitList = new ArrayList<Habit>();
+        if (day != "All") {
+            for (Habit h : habitList) {
+                if (h.hasDay(day)) {
+                    dayHabitList.add(h);
+                }
+            }
+            return dayHabitList;
+        }
+        else{
+            return this.habitList;
+        }
     }
 
     public void setHabits(ArrayList<Habit> habitList) {
@@ -27,29 +48,25 @@ public class HabitList {
     public void addHabit(Habit habit) {
 
         habitList.add(habit);
-        notifyListener();
-    }
-
-    private void notifyListener() {
-        for (Listener listener: listeners) {
-            listener.update();
-        }
-
     }
 
     public void deleteHabit(Habit habit) {
+
         habitList.remove(habit);
     }
 
-    public Habit getHabit(Habit habit) {
-        return habitList.get(habitList.indexOf(habit));
+    public int habitIndex(Habit habit){
+        return habitList.indexOf(habit);
     }
 
-    public void addListener(Listener l) {
-        listeners.add(l);
+    public void editHabit(int index, Habit habit) {
+        habitList.set(index, habit);
     }
 
-    public void removeListener(Listener l) {
-        listeners.remove(l);
+    public Habit getHabit(int index) {
+
+        return habitList.get(index);
     }
+
+
 }

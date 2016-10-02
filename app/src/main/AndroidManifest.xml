@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddHabitActivity" />
-        <activity android:name=".IndividualHabit"></activity>
+        <activity android:name=".IndividualHabitActivity"></activity>
     </application>
 
 </manifest>
